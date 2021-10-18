@@ -1,5 +1,6 @@
 package com.kafka.lab.exercise;
 
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -10,7 +11,7 @@ public class Consumer {
 	private final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
 	@KafkaListener(topics = "timestamp", groupId = "test-group")
-	public void consume(String message) {
-		logger.info(String.format("Consumed Message -> %s", message));
+	public void consume(ConsumerRecord<String, String> record) {
+		logger.info(String.format("Key is %s, Consumed Message -> %s from partition %s and offset %s", record.key(), record.value(), record.partition(), record.offset()));
 	}
 }

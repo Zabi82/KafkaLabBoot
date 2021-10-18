@@ -11,7 +11,10 @@ public class KafkaApplication {
 
 	public static void main(String[] args) throws Exception {
 
-		ConfigurableApplicationContext context = SpringApplication.run(KafkaApplication.class, args);
+		SpringApplication.run(KafkaApplication.class, args);
 
 	}
+
+
+
 }
